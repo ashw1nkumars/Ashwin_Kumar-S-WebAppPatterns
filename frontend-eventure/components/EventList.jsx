@@ -1,7 +1,7 @@
 import React from 'react'
 import EventCard from './EventCard'
 
-function EventsBoard() {
+function EventList() {
     return (
         <div className='h-full w-full'>
             <div className='font-semibold text-xl'>Active Events</div>
@@ -13,4 +13,4 @@ function EventsBoard() {
     )
 }
 
-export default EventsBoard
+export default EventList

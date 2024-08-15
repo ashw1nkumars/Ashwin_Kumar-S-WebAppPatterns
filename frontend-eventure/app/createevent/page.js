@@ -1,4 +1,4 @@
-import CreateEventForm from '@/components/createEvent/CreateEventForm'
+import CreateEventForm from '@/components/CreateEventForm'
 import React from 'react'
 
 function page() {

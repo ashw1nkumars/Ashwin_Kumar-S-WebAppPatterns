@@ -1,4 +1,4 @@
-import EventsBoard from '@/components/home/EventsBoard'
+import EventList from '@/components/EventList'
 import React from 'react'
 
 function page() {

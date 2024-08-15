@@ -1,7 +1,7 @@
 import React from 'react'
-import EventCard from '../home/EventCard'
+import EventCard from './EventCard'
 
-function MyEvents() {
+function PersonalEvents() {
     return (
         <div className='h-full w-full'>
             <div className='flex justify-between'>
@@ -21,4 +21,4 @@ function MyEvents() {
     )
 }
 
-export default MyEvents
+export default PersonalEvents
