@@ -1,13 +1,16 @@
 package com.ashwin.service;
 
 import com.ashwin.datamodel.Event;
+import com.ashwin.dto.UserEventsDTO;
 import com.ashwin.repo.EventRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class EventService {
@@ -36,6 +39,8 @@ public class EventService {
             existingEvent.setEventLocation(event.getEventLocation());
             existingEvent.setEventDescription(event.getEventDescription());
             existingEvent.setEventUser(event.getEventUser());
+            existingEvent.setEventCreatedBy(event.getEventCreatedBy());
+            existingEvent.setEventParticipants(event.getEventParticipants());
             return repo.save(existingEvent);
         }
         return null;
@@ -44,5 +49,21 @@ public class EventService {
     public String deleteEvent(String id) {
         repo.deleteById(id);
         return "Event deleted successfully";
+    }
+
+    public UserEventsDTO getUserEvents(String email) {
+        List<Event> createdEvents = repo.findAll().stream()
+                .filter(event -> Objects.equals(event.getEventCreatedBy(), email))  // Safely compare with null
+                .collect(Collectors.toList());
+
+        List<Event> participatingEvents = repo.findAll().stream()
+                .filter(event -> event.getEventParticipants() != null && event.getEventParticipants().contains(email))
+                .collect(Collectors.toList());
+
+        List<String> createdEventIDs = createdEvents.stream().map(Event::getId).collect(Collectors.toList());
+
+        List<String> participatingEventIDs = participatingEvents.stream().map(Event::getId).collect(Collectors.toList());
+
+        return new UserEventsDTO(createdEvents, participatingEvents, createdEventIDs, participatingEventIDs);
     }
 }

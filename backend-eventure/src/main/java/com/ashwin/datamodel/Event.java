@@ -9,6 +9,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Document(collection = "events")
 @Data
@@ -22,6 +23,8 @@ public class Event {
     private LocalDateTime eventDate;
     private String eventLocation;
     private String eventUser;
+    private String eventCreatedBy;
+    private List<String> eventParticipants;
 
     @CreatedDate
     private LocalDateTime createdAt;
