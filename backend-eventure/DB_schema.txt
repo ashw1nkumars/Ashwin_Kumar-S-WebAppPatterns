@@ -1,12 +1,11 @@
-Role
+Roles
     - id
     - roleName
 
-User
+Users
     - id
+    - name
     - email
-    - fname
-    - lname
     - password
     - createdAt
     - updatedAt
@@ -14,18 +13,18 @@ User
 
 Events
     - id
-    - name
+    - eventTitle
+    - eventDescription
     - eventDate
-    - location
-    - description
-    - Manager
+    - eventLocation
+    - eventUser
     - createdAt
-    - updatedAp
+    - updatedAt
 
 Participants
     - id
-    - eventId
-    - userId
+    - eventID
+    - userID
     - status
     - createdAt
     - updatedAt
@@ -33,8 +32,8 @@ Participants
 
 Tasks
     - id
-    - eventId
+    - eventID
     - taskName
-    - description
-    - deadline
-    - assigneId
+    - taskDescription
+    - taskDeadline
+    - assigneeID
